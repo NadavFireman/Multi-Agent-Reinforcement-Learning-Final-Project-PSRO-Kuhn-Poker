@@ -70,8 +70,8 @@
 - **`game.py`**: Kuhn Poker — game tree, information sets, policies, episode simulation, head-to-head matrices.
 - **`metagame.py`**: The empirical meta-game — payoff estimates with standard errors, dominance and cycles.
 - **`metasolvers.py`**: The eight meta-strategy solvers.
-- **`Multi_Agent_Reinforcement_Learning_Final_Project.ipynb`**: Notebook — experiments, ablations and analysis (Colab).
-- **`oracles.py`**: The three response oracles and the single-policy self-play learner.
+- **`Multi_Agent_Reinforcement_Learning_Final_Project.ipynb`**: Notebook — experiments, ablations, analysis (Colab).
+- - **`oracles.py`**: The three response oracles and the single-policy self-play learner.
 - **`psro.py`**: The configurable PSRO loop, per-iteration logging, save and resume.
 - **`psro_kuhn_presentation.pdf`**: The presentation, 20 slides: 17 for the talk and three appendix slides.
 - **`psro_kuhn_report.pdf`**: The eight-page report.
