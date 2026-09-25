@@ -70,7 +70,7 @@
 - **`game.py`**: Kuhn Poker — game tree, information sets, policies, episode simulation, head-to-head matrices.
 - **`metagame.py`**: The empirical meta-game — payoff estimates with standard errors, dominance and cycles.
 - **`metasolvers.py`**: The eight meta-strategy solvers.
-- **`Multi_Agent_Reinforcement_Learning_Final_Project.ipynb`**: Full solution notebook — experiments, ablations and analysis (Colab).
+- **`Multi_Agent_Reinforcement_Learning_Final_Project.ipynb`**: Notebook — experiments, ablations and analysis (Colab).
 - **`oracles.py`**: The three response oracles and the single-policy self-play learner.
 - **`psro.py`**: The configurable PSRO loop, per-iteration logging, save and resume.
 - **`psro_kuhn_presentation.pdf`**: The presentation, 20 slides: 17 for the talk and three appendix slides.
@@ -86,4 +86,4 @@
 - McMahan et al. (2003). [Planning in the Presence of Cost Functions Controlled by an Adversary](https://www.cs.cmu.edu/~ggordon/mcmahan-ggordon-blum.icml2003.pdf). Double oracle.
 - Wang et al. (2022). [Evaluating Strategy Exploration in Empirical Game-Theoretic Analysis](https://arxiv.org/abs/2105.10423). Population exploitability.
 
-Report also cites: [Agarwal et al. (2021)](https://arxiv.org/abs/2108.13264), [McAleer et al. (2020)](https://arxiv.org/abs/2006.08555) and [(2021)](https://arxiv.org/abs/2103.06426), [Muller et al. (2020)](https://arxiv.org/abs/1909.12823), [Zhang and Sandholm (2024)](https://arxiv.org/abs/2405.06797).
+Also cited: [Agarwal et al. (2021)](https://arxiv.org/abs/2108.13264), [McAleer et al. (2020)](https://arxiv.org/abs/2006.08555) and [(2021)](https://arxiv.org/abs/2103.06426), [Muller et al. (2020)](https://arxiv.org/abs/1909.12823), [Zhang and Sandholm (2024)](https://arxiv.org/abs/2405.06797).
