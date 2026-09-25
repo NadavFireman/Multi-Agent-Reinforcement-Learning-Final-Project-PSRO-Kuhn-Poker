@@ -4,10 +4,10 @@
 
 ## Headline Results
 
-- **Same training budget:** exploitability **0.0315** against **1.2500** for self-play — **39.7×** lower, no overlap across five seeds.
+- **Same training budget:** exploitability **0.0315** against self-play's **1.2500** — **39.7×** lower, no overlap across five seeds.
 - **The right game value:** error **0.0004** against **0.8056**.
 - **The equilibrium, unaided:** the learned mixture lands on Kuhn's equilibrium family, which no code references.
-- **The trade-off, kept in:** against weak opponents self-play earns more. Robustness and exploitation are different metrics.
+- **The trade-off, kept in:** against weak opponents self-play earns more. Robustness and exploitation are distinct.
 
 ## Key Features
 
@@ -21,7 +21,7 @@
 
 ## Repository Structure
 
-- **`Multi_Agent_Reinforcement_Learning_Final_Project.ipynb`**: Full solution notebook — validation, a complete PSRO run, all five experiments, ablations and analysis (explanations in Hebrew). Written in Colab.
+- **`Multi_Agent_Reinforcement_Learning_Final_Project.ipynb`**: Full solution notebook — validation, a complete PSRO run, all five experiments, ablations and analysis. Written in Colab.
 - **`game.py`**: Kuhn Poker — game tree, information sets, policies, episode simulation, head-to-head matrices.
 - **`exact.py`**: Exact game value, best response, exploitability and Kuhn equilibrium parameters.
 - **`metagame.py`**: The empirical meta-game — payoff estimates with standard errors, dominance and cycles.
@@ -55,7 +55,7 @@
   - `experiment4_oracle_quality.json` (30 runs)
   - `experiment5_generalisation.json` (20 runs)
   - `ablations.json` (30 runs)
-- **`results/`** — per-iteration (`*.csv`) and per-run (`*_summary.csv`) metrics, plus payoff matrices and meta-strategies (`*_extra.json`).
+- **`results/`** — per-iteration (`*.csv`), per-run (`*_summary.csv`), payoff matrices and meta-strategies (`*_extra.json`).
   - `experiment1_selfplay_vs_psro.csv` (120 rows)
   - `experiment1_selfplay_vs_psro_summary.csv` (10 rows)
   - `experiment1_selfplay_vs_psro_extra.json`
@@ -75,15 +75,15 @@
   - `ablations_extra.json`
 - **`psro_kuhn_report.pdf`**: The eight-page report.
 - **`psro_kuhn_presentation.pdf`**: The presentation, 20 slides: 17 for the talk and three appendix slides.
-- **`requirements.txt`**: NumPy, pandas, SciPy, matplotlib, pytest. Python 3.10 or newer. `pip install -r requirements.txt`, then `pytest test_psro.py -q` or `python experiments.py --all` (which loads the saved results; `--force` recomputes them).
+- **`requirements.txt`**: Dependencies (Python 3.10+).
 - **`final_project_instructions.pdf`**: Original course project specification.
 
 ## References
 
-- Lanctot et al. (2017). [A Unified Game-Theoretic Approach to Multiagent Reinforcement Learning](https://arxiv.org/abs/1711.00832). NeurIPS - PSRO.
-- McMahan et al. (2003). [Planning in the Presence of Cost Functions Controlled by an Adversary](https://www.cs.cmu.edu/~ggordon/mcmahan-ggordon-blum.icml2003.pdf). ICML - double oracle.
-- Balduzzi et al. (2019). [Open-ended Learning in Symmetric Zero-sum Games](https://arxiv.org/abs/1901.08106). ICML - rectified Nash (bonus extension).
-- Wang et al. (2022). [Evaluating Strategy Exploration in Empirical Game-Theoretic Analysis](https://arxiv.org/abs/2105.10423). AAMAS - population exploitability.
-- Kuhn (1950). *A Simplified Two-Person Poker*. Contributions to the Theory of Games I - the equilibrium family.
+- Lanctot et al. (2017). [A Unified Game-Theoretic Approach to Multiagent Reinforcement Learning](https://arxiv.org/abs/1711.00832). PSRO.
+- McMahan et al. (2003). [Planning in the Presence of Cost Functions Controlled by an Adversary](https://www.cs.cmu.edu/~ggordon/mcmahan-ggordon-blum.icml2003.pdf). Double oracle.
+- Balduzzi et al. (2019). [Open-ended Learning in Symmetric Zero-sum Games](https://arxiv.org/abs/1901.08106). Rectified Nash (bonus extension).
+- Wang et al. (2022). [Evaluating Strategy Exploration in Empirical Game-Theoretic Analysis](https://arxiv.org/abs/2105.10423). Population exploitability.
+- Kuhn (1950). *A Simplified Two-Person Poker*. The equilibrium family.
 
-Also cited in the report: [McAleer et al. (2020)](https://arxiv.org/abs/2006.08555) and [(2021)](https://arxiv.org/abs/2103.06426), [Muller et al. (2020)](https://arxiv.org/abs/1909.12823), [Zhang and Sandholm (2024)](https://arxiv.org/abs/2405.06797), [Agarwal et al. (2021)](https://arxiv.org/abs/2108.13264).
+Cited in the report: [McAleer et al. (2020)](https://arxiv.org/abs/2006.08555) and [(2021)](https://arxiv.org/abs/2103.06426), [Muller et al. (2020)](https://arxiv.org/abs/1909.12823), [Zhang and Sandholm (2024)](https://arxiv.org/abs/2405.06797), [Agarwal et al. (2021)](https://arxiv.org/abs/2108.13264).
