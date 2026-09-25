@@ -11,13 +11,13 @@
 
 ## Key Features
 
-- **Exact Ground Truth:** small enough to enumerate every pure strategy, so best responses and exploitability are computed rather than estimated — three independent checks land at machine precision.
-- **PSRO Loop with Checkpointing:** every parameter in one configuration object, everything serialized so an interrupted run resumes. With the exact oracle and the exact matrix it becomes the classical double oracle.
-- **Three Oracles, Eight Solvers:** tabular Q-learning, REINFORCE and exact best response; uniform, latest-policy, fictitious play, Nash by linear programming, replicator, projected replicator, regret matching and rectified Nash. Choosing the solver chooses the algorithm — latest-policy gives self-play, Nash gives double oracle.
-- **Error Decomposition:** the two approximations switched off one at a time, separating the cost of sampling the payoff matrix from the cost of approximating the best response. Same order of magnitude.
-- **Statistics and Ablations:** five seeds, Student-t intervals, Mann-Whitney where a t-test divides by zero, rliable-style reporting. Five ablations rank what does the work: the population and the mixture, not the learner.
+- **Exact Ground Truth:** every pure strategy enumerated, so exploitability is computed, not estimated.
+- **PSRO Loop with Checkpointing:** one configuration object, and interrupted runs resume where they stopped.
+- **Three Oracles, Eight Solvers:** choosing the solver chooses the algorithm — from self-play to double oracle.
+- **Error Decomposition:** the cost of sampling the payoff matrix separated from the cost of approximate training.
+- **Statistics and Ablations:** five seeds, confidence intervals, and five ablations showing what does the work.
 - **Bonus Extension - Rectified PSRO:** implemented independently, its documented failure reproduced.
-- **89 Automated Tests:** rules, the analytic solution, exact best response, exploitability, every solver, the loop and checkpoint round-trips. All pass in about 40 seconds.
+- **89 Automated Tests:** all pass in about 40 seconds.
 
 ## Repository Structure
 
@@ -31,19 +31,40 @@
 - **`analysis.py`**: Behavioural diversity measures, rliable-style statistics, and every figure.
 - **`experiments.py`**: The five experiments and the ablation study, with result caching and a CLI.
 - **`test_psro.py`**: The 89 correctness tests.
-- **`__pycache__/`** — the compiled bytecode CPython 3.13 writes the first time each module is imported (by the tests, the CLI or the notebook). One `.pyc` per module, regenerated automatically whenever a source file changes, so nothing here is edited by hand.
-  - `analysis.cpython-313.pyc` · `exact.cpython-313.pyc` · `experiments.cpython-313.pyc` · `game.cpython-313.pyc`
-  - `metagame.cpython-313.pyc` · `metasolvers.cpython-313.pyc` · `oracles.cpython-313.pyc` · `psro.cpython-313.pyc`
-- **`configs/`** — one file per experiment, each a list of the runs it launches with every parameter of each: solver, oracle, seed, iterations, oracle budget, evaluation episodes, initial population and whether the meta-game is exact. 131 runs in total.
-  - `experiment1_selfplay_vs_psro.json` (10 runs) · `experiment2_metasolvers.json` (40) · `experiment3_population.json` (1)
-  - `experiment4_oracle_quality.json` (30) · `experiment5_generalisation.json` (20) · `ablations.json` (30)
-- **`results/`** — `*.csv` is one row per iteration (17 columns: population, exploitability, entropy per player, game value, oracle seconds, wall seconds); `*_summary.csv` one row per run (61 columns, adding the generalisation, diversity, cycle and Kuhn-parameter measures); `*_extra.json` what does not fit a table.
-  - `experiment1_selfplay_vs_psro.csv` (120 rows), `experiment1_selfplay_vs_psro_summary.csv` (10), `experiment1_selfplay_vs_psro_extra.json` — exploitability curves only
-  - `experiment2_metasolvers.csv` (480), `experiment2_metasolvers_summary.csv` (40), `experiment2_metasolvers_extra.json` — per run: payoff matrix, head-to-head matrix, both meta-strategies, support, policy names, marginal diversity, exploitability curve
-  - `experiment3_population.csv` (12), `experiment3_population_extra.json` — the population analysis: estimated and exact payoff matrices with standard errors, head-to-head, cycles, dominated policies per player. No summary file: a single seed, nothing to aggregate
-  - `experiment4_oracle_quality.csv` (360), `experiment4_oracle_quality_summary.csv` (30), `experiment4_oracle_quality_extra.json` — same per-run set as experiment 2
-  - `experiment5_generalisation.csv` (240), `experiment5_generalisation_summary.csv` (20), `experiment5_generalisation_extra.json` — same
-  - `ablations.csv` (360), `ablations_summary.csv` (30), `ablations_extra.json` — same
+- **`__pycache__/`** — the compiled bytecode CPython 3.13 writes the first time each module is imported. One `.pyc` per module, regenerated automatically whenever a source file changes.
+  - `analysis.cpython-313.pyc`
+  - `exact.cpython-313.pyc`
+  - `experiments.cpython-313.pyc`
+  - `game.cpython-313.pyc`
+  - `metagame.cpython-313.pyc`
+  - `metasolvers.cpython-313.pyc`
+  - `oracles.cpython-313.pyc`
+  - `psro.cpython-313.pyc`
+- **`configs/`** — one file per experiment, listing every run it launches with all its parameters. 131 runs in total.
+  - `experiment1_selfplay_vs_psro.json` (10 runs)
+  - `experiment2_metasolvers.json` (40 runs)
+  - `experiment3_population.json` (1 run)
+  - `experiment4_oracle_quality.json` (30 runs)
+  - `experiment5_generalisation.json` (20 runs)
+  - `ablations.json` (30 runs)
+- **`results/`** — `*.csv` is one row per iteration, `*_summary.csv` one row per run, and `*_extra.json` holds payoff matrices, meta-strategies and curves.
+  - `experiment1_selfplay_vs_psro.csv` (120 rows)
+  - `experiment1_selfplay_vs_psro_summary.csv` (10 rows)
+  - `experiment1_selfplay_vs_psro_extra.json`
+  - `experiment2_metasolvers.csv` (480 rows)
+  - `experiment2_metasolvers_summary.csv` (40 rows)
+  - `experiment2_metasolvers_extra.json`
+  - `experiment3_population.csv` (12 rows)
+  - `experiment3_population_extra.json`
+  - `experiment4_oracle_quality.csv` (360 rows)
+  - `experiment4_oracle_quality_summary.csv` (30 rows)
+  - `experiment4_oracle_quality_extra.json`
+  - `experiment5_generalisation.csv` (240 rows)
+  - `experiment5_generalisation_summary.csv` (20 rows)
+  - `experiment5_generalisation_extra.json`
+  - `ablations.csv` (360 rows)
+  - `ablations_summary.csv` (30 rows)
+  - `ablations_extra.json`
 - **`psro_kuhn_report.pdf`**: The eight-page report.
 - **`psro_kuhn_presentation.pdf`**: The presentation, 20 slides: 17 for the talk and three appendix slides.
 - **`requirements.txt`**: NumPy, pandas, SciPy, matplotlib, pytest. Python 3.10 or newer. `pip install -r requirements.txt`, then `pytest test_psro.py -q` or `python experiments.py --all` (which loads the saved results; `--force` recomputes them).
@@ -52,9 +73,9 @@
 ## References
 
 - Lanctot, M. et al. (2017). [A Unified Game-Theoretic Approach to Multiagent Reinforcement Learning](https://arxiv.org/abs/1711.00832). NeurIPS - PSRO itself.
-- McMahan, H. B., Gordon, G. J. and Blum, A. (2003). [Planning in the Presence of Cost Functions Controlled by an Adversary](https://www.cs.cmu.edu/~ggordon/mcmahan-ggordon-blum.icml2003.pdf). ICML - double oracle.
+- McMahan, H. B. et al. (2003). [Planning in the Presence of Cost Functions Controlled by an Adversary](https://www.cs.cmu.edu/~ggordon/mcmahan-ggordon-blum.icml2003.pdf). ICML - double oracle.
 - Balduzzi, D. et al. (2019). [Open-ended Learning in Symmetric Zero-sum Games](https://arxiv.org/abs/1901.08106). ICML - rectified Nash response, the bonus extension.
-- Wang, Y., Ma, G. Q. and Wellman, M. P. (2022). [Evaluating Strategy Exploration in Empirical Game-Theoretic Analysis](https://arxiv.org/abs/2105.10423). AAMAS - population exploitability.
+- Wang, Y. et al. (2022). [Evaluating Strategy Exploration in Empirical Game-Theoretic Analysis](https://arxiv.org/abs/2105.10423). AAMAS - population exploitability.
 - Kuhn, H. W. (1950). *A Simplified Two-Person Poker*. Contributions to the Theory of Games I - the equilibrium family.
 
 Also cited in the report: [McAleer et al. (2020)](https://arxiv.org/abs/2006.08555) and [(2021)](https://arxiv.org/abs/2103.06426), [Muller et al. (2020)](https://arxiv.org/abs/1909.12823), [Zhang and Sandholm (2024)](https://arxiv.org/abs/2405.06797), [Agarwal et al. (2021)](https://arxiv.org/abs/2108.13264).
