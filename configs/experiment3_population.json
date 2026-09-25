@@ -1,0 +1,17 @@
+[
+ {
+  "label": "nash_s0",
+  "solver": "nash",
+  "oracle": "q_learning",
+  "seed": 0,
+  "iterations": 12,
+  "oracle_budget": 5000,
+  "episodes_per_seed": 400,
+  "num_seeds": 5,
+  "initial": "random",
+  "exact_metagame": false,
+  "solver_kwargs": {},
+  "oracle_kwargs": {},
+  "group": "nash"
+ }
+]
